@@ -25,7 +25,12 @@ function messageSentByBot(messageAuthor) {
     } else { return false; }
 }
 
+function getRandomMeme(memes) {
+    return memes[Math.floor(Math.random() * memes.length)];
+}
+
 module.exports.messageContainsPrefix = messageContainsPrefix;
 module.exports.messageInValidChannel = messageInValidChannel;
 module.exports.isValidBotCommand = isValidBotCommand;
 module.exports.messageSentByBot = messageSentByBot;
+module.exports.getRandomMeme = getRandomMeme;
