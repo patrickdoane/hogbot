@@ -1,0 +1,24 @@
+{
+  "name": "hogbot9001",
+  "version": "1.0.0",
+  "description": "discord bot for Gloryhogs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/patrickdoane/hogbot.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/patrickdoane/hogbot/issues"
+  },
+  "homepage": "https://github.com/patrickdoane/hogbot#readme",
+  "dependencies": {
+    "discord.js": "^11.5.1",
+    "dotenv": "^8.2.0",
+    "eslint": "^6.8.0"
+  }
+}
