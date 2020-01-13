@@ -1,9 +1,7 @@
 /* eslint-disable indent */
 const Discord = require('discord.js');
 const client = new Discord.Client();
-const meme = require('./memes.js');
 const dotenv = require('dotenv');
-const memes = require('./memes.json');
 dotenv.config();
 const messages = require('./messages');
 const bot = require('./bot')
