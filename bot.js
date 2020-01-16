@@ -10,11 +10,17 @@ const handleCommand = message => {
     const command = messages.formatCommand(message.content);
     switch (command) {
         case 'roster':
-            const roster = getRoster();
             message.channel.send(`${message.author}`, { files: [roster.img] });
+            console.log(roster);
             break;
         case 'signup':
-            message.channel.send(`Signed up ${message.author} for raid roster.`);
+            if (!isRosterFull(roster)) {
+                roster.users.push(message.author);
+                roster.size = roster.users.length;
+                message.channel.send(`Signed up ${message.author} for raid roster.`);
+            } else {
+                message.channel.send(`Could not sign up ${message.author} because the roster is full.`);
+            }
             break;
         case 'status':
             message.channel.send('Status of raid: TODO.');
@@ -34,6 +40,9 @@ const getRoster = () => {
         .end('end', () => console.log('End reading CSV.'));
     generateRoster();
     roster.img = './out.png';
+    roster.users = [];
+    roster.limit = 40;
+    roster.size = roster.users.length;
     return roster;
 }
 
@@ -47,6 +56,14 @@ const generateRoster = () => {
         console.log(`stderr: ${stderr}`);
     }
 }
+
+const isRosterFull = roster => {
+    if (roster.size >= roster.limit) {
+        return true;
+    } else { return false; }
+}
+
+const roster = getRoster();
 
 module.exports = {
     handleCommand: handleCommand,
