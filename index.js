@@ -14,13 +14,16 @@ client.once('ready', () => {
 
 client.login(bot_token);
 
-let roster = [];
 const commands = ['roster', 'signup', 'status', 'memes'];
 
 client.on('message', message => {
     if (messages.isValidChannel(message.channel.name, 'raid-signups') &&
         messages.containsPrefix(message.content, '!') && !messages.isMessageSentByBot(message.author)) {
-        if (messages.isValidBotCommand(message.content, commands)) { bot.handleCommand(message); }
-        else { message.channel.send(`${message.author}, ${message.content} is not a valid command.`); }
+        if (messages.isValidBotCommand(message.content, commands)) {
+            bot.handleCommand(message);
+        }
+        else {
+            message.channel.send(`${message.author}, ${message.content} is not a valid command.`);
+        }
     }
 })
