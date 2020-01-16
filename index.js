@@ -14,7 +14,7 @@ client.once('ready', () => {
 
 client.login(bot_token);
 
-const commands = ['roster', 'signup', 'status', 'memes'];
+const commands = ['roster', 'signup', 'status', 'memes', 'leave'];
 
 client.on('message', message => {
     if (messages.isValidChannel(message.channel.name, 'raid-signups') &&

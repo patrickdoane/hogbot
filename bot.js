@@ -16,12 +16,22 @@ const handleCommand = message => {
         case 'signup':
             if (isRosterFull(roster)) {
                 message.channel.send(`Could not sign up ${message.author} because the roster is full.`);
-            } else if (isDuplicateUser(message.author)) {
+            } else if (isUserInRoster(message.author)) {
                 message.channel.send(`Could not sign up ${message.author} because you are already on the roster!`);
             } else {
                 roster.users.push(message.author);
                 roster.size = roster.users.length;
                 message.channel.send(`Signed up ${message.author} for raid roster. The raid is now ${roster.size}/${roster.limit}.`);
+            }
+            break;
+        case 'leave':
+            if (isUserInRoster(message.author)) {
+                const userIndex = roster.users.findIndex(user => user.id === message.author.id);
+                roster.users.splice(userIndex, 1);
+                roster.size = roster.users.length;
+                message.channel.send(`Removed ${message.author} from the raid roster. The raid is now ${roster.size}/${roster.limit}.`);
+            } else {
+                message.channel.send(`${message.author}, you are not currently on the roster!`)
             }
             break;
         case 'status':
@@ -69,7 +79,7 @@ const isRosterFull = roster => {
     } else { return false; }
 }
 
-const isDuplicateUser = user => {
+const isUserInRoster = user => {
     if (roster.users.includes(user)) {
         return true;
     } else { return false; }
