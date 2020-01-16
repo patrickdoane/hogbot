@@ -14,16 +14,22 @@ const handleCommand = message => {
             console.log(roster);
             break;
         case 'signup':
-            if (!isRosterFull(roster)) {
+            if (isRosterFull(roster)) {
+                message.channel.send(`Could not sign up ${message.author} because the roster is full.`);
+            } else if (isDuplicateUser(message.author)) {
+                message.channel.send(`Could not sign up ${message.author} because you are already on the roster!`);
+            } else {
                 roster.users.push(message.author);
                 roster.size = roster.users.length;
-                message.channel.send(`Signed up ${message.author} for raid roster.`);
-            } else {
-                message.channel.send(`Could not sign up ${message.author} because the roster is full.`);
+                message.channel.send(`Signed up ${message.author} for raid roster. The raid is now ${roster.size}/${roster.limit}.`);
             }
             break;
         case 'status':
-            message.channel.send('Status of raid: TODO.');
+            if (isRosterFull(roster)) {
+                message.channel.send(`${message.author}, the raid is currently full!`);
+            } else {
+                message.channel.send(`${message.author}, the raid is currently ${roster.size}/${roster.limit}.`);
+            }
             break;
         case 'memes':
             message.channel.send(meme.getRandomMeme(memes.memes));
@@ -59,6 +65,12 @@ const generateRoster = () => {
 
 const isRosterFull = roster => {
     if (roster.size >= roster.limit) {
+        return true;
+    } else { return false; }
+}
+
+const isDuplicateUser = user => {
+    if (roster.users.includes(user)) {
         return true;
     } else { return false; }
 }
