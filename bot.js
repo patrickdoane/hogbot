@@ -49,11 +49,11 @@ const handleCommand = message => {
 
 const getRoster = () => {
     const roster = {};
-    let rosterPath = path.resolve('roster.csv');
+    let rosterPath = path.resolve('./roster.csv');
     fs.createReadStream(rosterPath)
         .pipe(csv())
         .on('data', data => console.log(data))
-        .end('end', () => console.log('End reading CSV.'));
+        .on('end', () => console.log('End reading CSV.'));
     generateRoster();
     roster.img = './out.png';
     roster.users = [];
