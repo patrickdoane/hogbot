@@ -3,8 +3,8 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 const dotenv = require('dotenv');
 dotenv.config();
-const messages = require('./messages');
-const bot = require('./bot')
+const messages = require('./bot/messages.js');
+const bot = require('./bot/bot.js')
 
 const bot_token = process.env.DISCORD_TOKEN;
 

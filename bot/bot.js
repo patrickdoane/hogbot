@@ -1,4 +1,4 @@
-const messages = require('./messages');
+const messages = require('./messages.js');
 const { exec } = require('child_process');
 const meme = require('./memes.js');
 const memes = require('./memes.json');
@@ -16,16 +16,16 @@ const handleCommand = message => {
         case 'signup':
             if (isRosterFull(roster)) {
                 message.channel.send(`Could not sign up ${message.author} because the roster is full.`);
-            } else if (isUserInRoster(message.author)) {
+            } else if (isUserInRoster(formatUser(message.author))) {
                 message.channel.send(`Could not sign up ${message.author} because you are already on the roster!`);
             } else {
-                roster.users.push(message.author);
+                roster.users.push(formatUser(message.author));
                 roster.size = roster.users.length;
                 message.channel.send(`Signed up ${message.author} for raid roster. The raid is now ${roster.size}/${roster.limit}.`);
             }
             break;
         case 'leave':
-            if (isUserInRoster(message.author)) {
+            if (isUserInRoster(formatUser(message.author))) {
                 const userIndex = roster.users.findIndex(user => user.id === message.author.id);
                 roster.users.splice(userIndex, 1);
                 roster.size = roster.users.length;
@@ -49,16 +49,18 @@ const handleCommand = message => {
 
 const getRoster = () => {
     const roster = {};
+    roster.users = [];
     let rosterPath = path.resolve('./roster.csv');
     fs.createReadStream(rosterPath)
         .pipe(csv())
-        .on('data', data => console.log(data))
-        .on('end', () => console.log('End reading CSV.'));
-    generateRoster();
-    roster.img = './out.png';
-    roster.users = [];
-    roster.limit = 40;
-    roster.size = roster.users.length;
+        .on('data', data => roster.users.push(data))
+        .on('end', () => {
+            console.log('End reading CSV.');
+            generateRoster();
+            roster.img = './out.png';
+            roster.limit = 40;
+            roster.size = roster.users.length;
+        });
     return roster;
 }
 
@@ -67,7 +69,6 @@ const generateRoster = () => {
         if (err) {
             return;
         }
-
         console.log(`stdout: ${stdout}`);
         console.log(`stderr: ${stderr}`);
     }
@@ -83,6 +84,17 @@ const isUserInRoster = user => {
     if (roster.users.includes(user)) {
         return true;
     } else { return false; }
+}
+
+const formatUser = author => {
+    const user = {
+        name: '',
+        class: '',
+        group: '',
+        position: '',
+        id: author.id
+    }
+    return user;
 }
 
 const roster = getRoster();
