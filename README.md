@@ -12,8 +12,14 @@ npm install
 ```
 DISCORD_TOKEN=XXXXXXXXXXXX.YYYYYYYYYY.ZZZZZZZZZZZ
 ```
+- for additional instructions, see the [discord.js guide](https://discordjs.guide/)
 
 ## running
 ```
 node index.js
 ```
+
+## dependencies
+* [node.js](https://nodejs.org/)
+* [discord.js](https://discord.js.org/)
+
