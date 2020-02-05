@@ -1,4 +1,4 @@
-# hogbot9001 <img src='assets/gloryhogs.png' align='right' width='400px' />
+# hogbot9001 <img src='assets/logo.png' align='right' width='400px' />
 discord bot for Gloryhogs
 
 **Features**
