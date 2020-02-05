@@ -2,10 +2,16 @@ HOGBOT9001:
     ☐ Redesign application architecture
     ☐ Improve project directory structure
     ☐ Host application on virtual server
-    ☐ Add some tests
+    tests:
+        ☐ test if bot connects to discord (https://github.com/discordjs/discord.js/issues/3576)
+        ☐ test for correct csv format
     bot:
         ☐ Make signups write to roster.csv
         ☐ Add user objects
+        ☐ add config file
+        ☐ add world buff monitoring/commands
+        ☐ add lotus commands
+        ☐ metric commands
     webapp:
         ☐ Decide on web application stack/architecture
     db:
