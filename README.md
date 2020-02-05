@@ -7,6 +7,11 @@ discord bot for Gloryhogs
 ```
 npm install
 ```
+- NOTE: you must create a .env in the project's root directory file with the key of DISCORD_TOKEN.
+- example contents of .env:
+```
+DISCORD_TOKEN=XXXXXXXXXXXX.YYYYYYYYYY.ZZZZZZZZZZZ
+```
 
 ## running
 ```
