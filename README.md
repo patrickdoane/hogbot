@@ -1,5 +1,9 @@
-# hogbot9001
-discord bot for Gloryhogs
+<h1 align="center">raidbot9001</h1>
+
+**Features**
++ Spam Memes!
++ Calculate, Compare, and display player metrics
++ Assist in Raid Roster Generation and Attendence logging
 
 ## setup
 - install [node.js](https://nodejs.org/en/download/)
