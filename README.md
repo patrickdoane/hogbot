@@ -1,5 +1,4 @@
-<h1 align="center">hogbot9001</h1><p align="center"><img src='assets/logo.png' width='400px' /></p>
-discord bot for Gloryhogs
+<h1 align="center">raidbot9001</h1>
 
 **Features**
 + Spam Memes!
