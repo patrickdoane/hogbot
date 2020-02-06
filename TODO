@@ -1,20 +1,23 @@
 HOGBOT9001:
+    ☐ Rename project from HOGBOT9001 to RAIDBOT9001
     ☐ Redesign application architecture
     ☐ Improve project directory structure
     ☐ Host application on virtual server
+    ☐ Fix alignment of header img in README.md
     tests:
         ☐ test if bot connects to discord (https://github.com/discordjs/discord.js/issues/3576)
         ☐ test for correct csv format
+        ☐ test for config file
+        ☐ test if class roles exist
     bot:
         ☐ Make signups write to roster.csv
         ☐ Add user objects
         ☐ add config file
         ☐ add world buff monitoring/commands
         ☐ add lotus commands
-        ☐ metric commands
+        ☐ add metric commands
+        ☐ add role assignment automation
     webapp:
         ☐ Decide on web application stack/architecture
     db:
         ☐ Decide on DB application
-
-
