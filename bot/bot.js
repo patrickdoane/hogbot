@@ -5,6 +5,7 @@ const memes = require('./memes.json');
 const csv = require('csv-parser');
 const fs = require('fs');
 const path = require('path');
+const quotes = require('../file.json');
 
 const handleCommand = message => {
     const command = messages.formatCommand(message.content);
@@ -43,6 +44,10 @@ const handleCommand = message => {
             break;
         case 'memes':
             message.channel.send(meme.getRandomMeme(memes.memes));
+            break;
+        case 'rant':
+            // add markov chain monte carlo sim command
+            message.channel.send('Markov Chain Monte Carlo rant goes here.');
             break;
     }
 }
@@ -98,6 +103,13 @@ const formatUser = author => {
 }
 
 const roster = getRoster();
+
+const markovChainGenerator = source => {
+    const derivativesQuotes = JSON.parse(quotes);
+    console.log(derivativesQuotes);
+
+    return markovChain;
+}
 
 module.exports = {
     handleCommand: handleCommand,

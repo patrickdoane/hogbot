@@ -16,7 +16,10 @@ HOGBOT9001:
         ☐ add world buff monitoring/commands
         ☐ add lotus commands
         ☐ add metric commands
-        ☐ add role assignment automation
+        add role assignment automation:
+            ☐ make bot watch specific message for reactions 
+            ☐ only allow one reaction for message
+            ☐ on messageReaction select, update role to corresponding class
     webapp:
         ☐ Decide on web application stack/architecture
     db:
